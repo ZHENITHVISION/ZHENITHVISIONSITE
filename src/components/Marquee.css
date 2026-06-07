@@ -1,0 +1,33 @@
+.marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 20px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  display: flex;
+}
+
+.marquee-content {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  animation: marquee 25s linear infinite;
+}
+
+.marquee-text {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+  letter-spacing: 2px;
+}
+
+.marquee-dot {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 1.2rem;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); } /* -50% because we duplicated content 4 times, actually -25% is enough for a seamless loop if duplicated enough, let's use -50% for 4 copies */
+}
