@@ -1,17 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-  --color-primary: #0A192F; /* Deep Blue */
-  --color-secondary: #FFD700; /* Yellow */
-  --color-dark: #020C1B;
-  --color-light: #F8F9FA;
-  --color-text: #333333;
-  --color-text-light: #666666;
+  --color-bg: #0B1630; /* Deep immersive 3D blue */
+  --color-primary: #1A2E5A; /* Deep Blue for components */
+  --color-secondary: #FFD700; /* Premium Gold */
+  --color-accent: #00E5FF; /* Electric Blue Glow */
+  --color-dark: #060B19; /* Darker blue */
+  --color-light: #E6F1FF;
+  --color-text: #E2E8F0; /* Readable text */
+  --color-text-light: #94A3B8;
   --color-white: #FFFFFF;
-  --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 10px 30px -10px rgba(2, 12, 27, 0.2);
-  --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
-  --transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  
+  /* Advanced Shadows & Glows */
+  --glow-accent: 0 0 20px rgba(0, 229, 255, 0.4);
+  --glow-gold: 0 0 20px rgba(255, 215, 0, 0.3);
+  --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  --shadow-glass: 0 8px 32px 0 rgba(0, 229, 255, 0.05);
+  
+  --transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   --border-radius: 16px;
 }
 
@@ -24,10 +31,14 @@
 
 body {
   font-family: 'Outfit', sans-serif;
-  background-color: var(--color-light);
+  background-color: var(--color-bg);
   color: var(--color-text);
   line-height: 1.6;
   overflow-x: hidden;
+  background-image: 
+    radial-gradient(circle at 15% 50%, rgba(0, 229, 255, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 85% 30%, rgba(255, 215, 0, 0.05) 0%, transparent 50%);
+  background-attachment: fixed;
 }
 
 a {
@@ -54,18 +65,40 @@ img, video {
 
 /* Glassmorphism utility */
 .glass {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(11, 22, 48, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 229, 255, 0.1);
   box-shadow: var(--shadow-glass);
 }
 
 .glass-dark {
-  background: rgba(10, 25, 47, 0.85);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(6, 11, 25, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(0, 229, 255, 0.1);
+}
+
+/* Holographic FX */
+.hologram-border {
+  position: relative;
+  overflow: hidden;
+}
+.hologram-border::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg, transparent 0%, transparent 70%, var(--color-accent) 100%);
+  animation: rotate 4s linear infinite;
+  z-index: -1;
+  opacity: 0.5;
+}
+@keyframes rotate {
+  100% { transform: rotate(360deg); }
 }
 
 /* Buttons */
@@ -86,13 +119,14 @@ img, video {
 
 .btn-primary {
   background-color: var(--color-secondary);
-  color: var(--color-primary);
-  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+  color: var(--color-dark);
+  box-shadow: var(--glow-gold);
+  border: 1px solid rgba(255, 215, 0, 0.5);
 }
 
 .btn-primary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 25px rgba(255, 215, 0, 0.6);
 }
 
 .btn-whatsapp {
@@ -120,10 +154,18 @@ img, video {
 /* Typography & Sections */
 .section-title {
   text-align: center;
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--color-primary);
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--color-white);
   margin-bottom: 15px;
+  letter-spacing: -1px;
+}
+
+.section-title span {
+  background: linear-gradient(135deg, var(--color-accent), var(--color-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .section-subtitle {
@@ -136,10 +178,8 @@ img, video {
   margin-right: auto;
 }
 
-.py-section { padding: 100px 0; }
-.bg-dark { background-color: var(--color-primary); color: var(--color-white); }
-.bg-dark .section-title { color: var(--color-white); }
-.bg-dark .section-subtitle { color: rgba(255, 255, 255, 0.7); }
+.py-section { padding: 120px 0; position: relative; z-index: 1; }
+.bg-dark { background-color: transparent; }
 
 /* Float Animation */
 @keyframes float {

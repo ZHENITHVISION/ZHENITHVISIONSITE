@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { MapPin, Phone, Mail, Send } from 'lucide-react';
 import './Contact.css';
 
@@ -57,15 +58,28 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-section">
+    <section id="contact" className="py-section relative">
       <div className="container">
-        <h2 className="section-title">Contactez-nous</h2>
-        <p className="section-subtitle">
-          Une question ? Un projet ? N'hésitez pas à nous écrire, nous vous répondrons dans les plus brefs délais.
-        </p>
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <h2 className="section-title">Prendre <span>Contact</span></h2>
+          <p className="section-subtitle">
+            Une question ? Un projet ? N'hésitez pas à nous écrire, nous vous répondrons dans les plus brefs délais.
+          </p>
+        </motion.div>
 
         <div className="contact-wrapper">
-          <div className="contact-info glass-dark">
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="contact-info glass-dark hologram-border"
+          >
             <h3>Informations de contact</h3>
             <p>Retrouvez-nous à Ouagadougou ou contactez-nous directement en ligne.</p>
             
@@ -94,9 +108,15 @@ const Contact = () => {
             </div>
             
             {/* Socials can be added here if needed */}
-          </div>
+          </motion.div>
 
-          <div className="contact-form-container glass">
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="contact-form-container glass-dark hologram-border"
+          >
             <form className="contact-form" onSubmit={handleSubmit}>
               {/* Honeypot field - hidden from users */}
               <input 
@@ -158,7 +178,7 @@ const Contact = () => {
                 </div>
               )}
             </form>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

@@ -11,7 +11,7 @@ import CTA from './components/CTA';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
-import FloatingWhatsApp from './components/FloatingWhatsApp';
+import VirtualAssistant from './components/VirtualAssistant';
 
 function App() {
   const schemaOrgJSONLD = {
@@ -63,7 +63,7 @@ function App() {
 
         <Footer />
         <BackToTop />
-        <FloatingWhatsApp />
+        <VirtualAssistant />
       </div>
     </HelmetProvider>
   );
