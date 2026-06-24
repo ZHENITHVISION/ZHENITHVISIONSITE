@@ -2,15 +2,19 @@ import React from 'react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import Stats from './components/Stats';
 import Marquee from './components/Marquee';
 import Services from './components/Services';
 import Portfolio from './components/Portfolio';
+import Testimonials from './components/Testimonials';
 import WhyChooseUs from './components/WhyChooseUs';
 import HowItWorks from './components/HowItWorks';
+import FAQ from './components/FAQ';
 import CTA from './components/CTA';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
+import FloatingWhatsApp from './components/FloatingWhatsApp';
 
 function App() {
   const schemaOrgJSONLD = {
@@ -25,7 +29,12 @@ function App() {
       "addressLocality": "Ouagadougou",
       "addressCountry": "BF"
     },
-    "description": "Agence de communication visuelle basée à Ouagadougou spécialisée dans la création de kakemonos, affiches publicitaires, vidéos promotionnelles et design graphique."
+    "description": "Agence de communication visuelle basée à Ouagadougou spécialisée dans la création de kakemonos, affiches publicitaires, vidéos promotionnelles et design graphique.",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5",
+      "reviewCount": "50"
+    }
   };
 
   return (
@@ -39,7 +48,7 @@ function App() {
           <meta property="og:description" content="Boostez la visibilité de votre entreprise avec des créations professionnelles au Burkina Faso." />
           <meta property="og:type" content="website" />
           <meta property="og:image" content="/assets/logo/logo ZENITH.png" />
-          <meta name="theme-color" content="#0A192F" />
+          <meta name="theme-color" content="#0D1B3E" />
           
           {/* Schema.org for SEO */}
           <script type="application/ld+json">
@@ -51,17 +60,21 @@ function App() {
         
         <main>
           <Hero />
+          <Stats />
           <Marquee />
           <Services />
           <Portfolio />
+          <Testimonials />
           <WhyChooseUs />
           <HowItWorks />
+          <FAQ />
           <CTA />
           <Contact />
         </main>
 
         <Footer />
         <BackToTop />
+        <FloatingWhatsApp />
       </div>
     </HelmetProvider>
   );
