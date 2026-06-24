@@ -28,15 +28,10 @@ const portfolioData = [
   { id: 23, type: 'branding', url: '/assets/affiches/QUELQUES MAQUETTES POUR AVENIR ACADEMIE.png', title: 'Maquette Avenir Académie' },
 
   // Videos
-  { id: 16, type: 'videos', url: '/assets/videos/VIDEOS MOTION smoothie aux fraises.mp4', title: 'Motion Smoothie' },
-  { id: 17, type: 'videos', url: '/assets/videos/asphalt videos promo ia.mp4', title: 'Promo Asphalt' },
-  { id: 18, type: 'videos', url: '/assets/videos/salon video promo ia.mp4', title: 'Promo Salon' },
   { id: 24, type: 'videos', url: '/assets/videos/ADS VIDEOS.mp4', title: 'ADS Vidéos' },
   { id: 25, type: 'videos', url: '/assets/videos/VIDEOS POUR SIF.mp4', title: 'Promo SIF' },
   { id: 26, type: 'videos', url: '/assets/videos/KAKEMONO MOTION ADS.mp4', title: 'Kakemono Motion ADS' },
   { id: 27, type: 'videos', url: '/assets/videos/KAKEMONO ADS.mp4', title: 'Kakemono ADS' },
-  { id: 28, type: 'videos', url: '/assets/videos/SERVICE DE CRETION DE VIDEOS.mp4', title: 'Création de Vidéos' },
-  { id: 29, type: 'videos', url: '/assets/videos/sirius videos prom ia.mp4', title: 'Promo Sirius' },
   { id: 30, type: 'videos', url: '/assets/videos/PUB UGC.mp4', title: 'Pub UGC' },
   { id: 31, type: 'videos', url: '/assets/videos/RENDER VOTRE ENTREPRISE VISIBLE.mp4', title: 'Rendez votre Entreprise Visible' },
   { id: 32, type: 'videos', url: '/assets/videos/UGC.mp4', title: 'UGC' },
