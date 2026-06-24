@@ -37,6 +37,10 @@ const portfolioData = [
   { id: 27, type: 'videos', url: '/assets/videos/KAKEMONO ADS.mp4', title: 'Kakemono ADS' },
   { id: 28, type: 'videos', url: '/assets/videos/SERVICE DE CRETION DE VIDEOS.mp4', title: 'Création de Vidéos' },
   { id: 29, type: 'videos', url: '/assets/videos/sirius videos prom ia.mp4', title: 'Promo Sirius' },
+  { id: 30, type: 'videos', url: '/assets/videos/PUB UGC.mp4', title: 'Pub UGC' },
+  { id: 31, type: 'videos', url: '/assets/videos/RENDER VOTRE ENTREPRISE VISIBLE.mp4', title: 'Rendez votre Entreprise Visible' },
+  { id: 32, type: 'videos', url: '/assets/videos/UGC.mp4', title: 'UGC' },
+  { id: 33, type: 'videos', url: '/assets/videos/VOTRE BUSINESS PASSE INAPERCU.mp4', title: 'Votre Business Passe Inaperçu ?' },
 ];
 
 const Portfolio = () => {
