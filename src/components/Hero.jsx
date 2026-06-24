@@ -1,132 +1,156 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight, MessageCircle } from 'lucide-react';
+import { MessageCircle, ArrowRight, Star } from 'lucide-react';
 import MagneticButton from './MagneticButton';
 import './Hero.css';
 
 const Hero = () => {
   const containerRef = useRef(null);
-  
-  // Parallax scrolling
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"]
-  });
-
-  const yBackground = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-  const yContent = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
-  const opacityText = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-  const scaleLogo = useTransform(scrollYProgress, [0, 1], [1, 0.8]);
+  const { scrollYProgress } = useScroll({ target: containerRef, offset: ['start start', 'end start'] });
+  const yContent = useTransform(scrollYProgress, [0, 1], ['0%', '18%']);
+  const opacity  = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
 
   return (
-    <section id="home" className="hero-3d" ref={containerRef}>
-      {/* Deep Background with Parallax */}
-      <motion.div 
-        className="hero-3d-bg"
-        style={{ y: yBackground }}
-      >
-        <div className="light-beam beam-1"></div>
-        <div className="light-beam beam-2"></div>
-        <div className="light-beam beam-3"></div>
-      </motion.div>
+    <section id="home" className="hero-zv" ref={containerRef}>
+      {/* Background décors */}
+      <div className="hero-orb-1" />
+      <div className="hero-orb-2" />
+      <div className="hero-grid" />
 
-      <div className="container hero-3d-container">
-        
-        {/* Left Content with Parallax */}
-        <motion.div 
-          className="hero-3d-content"
-          style={{ y: yContent, opacity: opacityText }}
+      <div className="container hero-zv-inner">
+
+        {/* ── LEFT: Content ── */}
+        <motion.div
+          className="hero-content"
+          style={{ y: yContent, opacity }}
         >
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
+          {/* Tag */}
+          <motion.div
+            className="hero-tag"
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="hero-badge hologram-border glass-dark"
+            transition={{ duration: 0.6 }}
           >
-            Agence de Communication Visuelle
+            Agence de Communication Visuelle — Burkina Faso
           </motion.div>
 
-          <motion.h1 
+          {/* Titre */}
+          <motion.h1
+            className="hero-title"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="hero-title"
+            transition={{ duration: 0.7, delay: 0.15 }}
           >
-            Boostez la visibilité de votre entreprise avec des créations <br/>
-            <span className="text-gradient-electric">professionnelles.</span>
+            Donnez vie à vos<br />
+            idées avec des<br />
+            créations <span className="highlight">qui vendent.</span>
           </motion.h1>
 
-          <motion.p 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+          {/* Sous-titre */}
+          <motion.p
             className="hero-subtitle"
+            initial={{ opacity: 0, y: 25 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.28 }}
           >
-            Design premium, vidéos immersives et kakemonos holographiques au Burkina Faso. 
-            Écrasez la concurrence avec une identité visuelle d'élite.
+            Kakemonos, affiches, vidéos, design graphique — 
+            Zenith Vision crée des visuels professionnels qui attirent vos clients 
+            et font grandir votre business.
           </motion.p>
 
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+          {/* CTA */}
+          <motion.div
             className="hero-cta"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.4 }}
           >
-            <MagneticButton href="https://wa.me/22665414899" target="_blank" rel="noreferrer" className="btn btn-primary">
-              <MessageCircle size={20} />
+            <MagneticButton
+              href="https://wa.me/22665414899"
+              target="_blank"
+              rel="noreferrer"
+              className="btn btn-primary"
+            >
+              <MessageCircle size={19} />
               Démarrer un projet
             </MagneticButton>
-            <MagneticButton href="#portfolio" className="btn btn-outline glass">
-              Explorer le Portfolio
-              <ArrowRight size={20} />
+            <MagneticButton href="#portfolio" className="btn btn-outline">
+              Voir nos réalisations
+              <ArrowRight size={19} />
             </MagneticButton>
           </motion.div>
+
+          {/* Trust bar */}
+          <motion.div
+            className="hero-trust"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.7, delay: 0.55 }}
+          >
+            <div className="trust-avatars">
+              <div className="trust-avatar">ZV</div>
+              <div className="trust-avatar">BF</div>
+              <div className="trust-avatar">OK</div>
+            </div>
+            <p className="trust-text">
+              <strong>+50 clients</strong> satisfaits au Burkina Faso
+            </p>
+            <div style={{ display:'flex', gap:'2px' }}>
+              {[...Array(5)].map((_,i) => (
+                <Star key={i} size={13} fill="#F2C335" color="#F2C335" />
+              ))}
+            </div>
+          </motion.div>
         </motion.div>
 
-        {/* Right Visual 3D Float */}
-        <motion.div 
-          className="hero-3d-visual"
-          style={{ scale: scaleLogo }}
-          initial={{ opacity: 0, scale: 0.8 }}
+        {/* ── RIGHT: 3D Visual ── */}
+        <motion.div
+          className="hero-visual"
+          initial={{ opacity: 0, scale: 0.88 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
+          transition={{ duration: 1, delay: 0.2, ease: 'easeOut' }}
         >
-          <motion.div 
-            className="visual-core glass-dark hologram-border"
-            animate={{ 
-              y: [0, -20, 0],
-              rotateX: [0, 5, 0],
-              rotateY: [0, 10, 0]
-            }}
-            transition={{ 
-              duration: 6, 
-              repeat: Infinity, 
-              ease: "easeInOut" 
-            }}
+          {/* Floating badges */}
+          <div className="badge-float badge-1">🎨 Affiches</div>
+          <div className="badge-float badge-2">🎬 Vidéos</div>
+          <div className="badge-float badge-3">📐 Kakemonos</div>
+
+          {/* Main 3D card */}
+          <motion.div
+            className="hero-card-3d"
+            animate={{ y: [0, -14, 0], rotateX: [0, 3, 0], rotateY: [0, 6, 0] }}
+            transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
           >
-            <div className="logo-container-3d">
-              <img src="/assets/logo/logo ZENITH.png" alt="Zenith Vision" className="hero-logo-glow" />
-              <img src="/assets/logo/logo ZENITH.png" alt="Zenith Vision" className="hero-logo-front" />
+            {/* Logo */}
+            <div className="logo-3d-wrap">
+              <div className="logo-3d-glow" />
+              <div className="logo-ring" />
+              <div className="logo-ring logo-ring-2" />
+              <img
+                src="/assets/logo/logo ZENITH.png"
+                alt="Zenith Vision"
+                className="logo-3d-img"
+              />
             </div>
-            
-            <div className="visual-stats-3d">
-              <div className="stat-item-3d glass">
-                <span className="stat-value text-gradient-electric">100%</span>
-                <span className="stat-label">Premium</span>
+
+            {/* Stats */}
+            <div className="card-stats">
+              <div className="card-stat">
+                <span className="card-stat-value">50+</span>
+                <span className="card-stat-label">Clients</span>
               </div>
-              <div className="stat-item-3d glass">
-                <span className="stat-value text-gradient-electric">Ultra</span>
-                <span className="stat-label">Rapide</span>
+              <div className="card-stat">
+                <span className="card-stat-value">100%</span>
+                <span className="card-stat-label">Qualité</span>
+              </div>
+              <div className="card-stat">
+                <span className="card-stat-value">24h</span>
+                <span className="card-stat-label">Délai*</span>
               </div>
             </div>
           </motion.div>
-
-          {/* Floating Decor Particles */}
-          <motion.div className="particle p1 glass" animate={{ y: [0, 30, 0], x: [0, -20, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "linear" }}></motion.div>
-          <motion.div className="particle p2 glass" animate={{ y: [0, -40, 0], x: [0, 30, 0] }} transition={{ duration: 5, repeat: Infinity, ease: "linear" }}></motion.div>
-          <motion.div className="particle p3 glass" animate={{ y: [0, 20, 0], x: [0, 20, 0] }} transition={{ duration: 3, repeat: Infinity, ease: "linear" }}></motion.div>
-
         </motion.div>
+
       </div>
     </section>
   );

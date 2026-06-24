@@ -49,10 +49,10 @@ const HolographicCard = ({ service, index }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="service-card-3d glass-dark hologram-border"
+      className="service-card-3d"
     >
       <div className="card-content-3d" style={{ transform: "translateZ(40px)" }}>
-        <div className="service-icon-3d" style={{ color: service.color, boxShadow: `0 0 20px ${service.color}40` }}>
+        <div className="service-icon-3d" style={{ color: service.color }}>
           {service.icon}
         </div>
         <h3 className="service-title-3d">{service.title}</h3>
@@ -81,35 +81,35 @@ const Services = () => {
       description: 'Supports verticaux premium pour vos événements. Design holographique et impression HD.',
       price: 'À partir de 39 000 FCFA',
       icon: <Presentation size={48} strokeWidth={1.5} />,
-      color: '#00E5FF' // Electric Blue
+      color: '#F2C335' // Gold
     },
     {
       title: 'X-Banner',
       description: 'Support de communication ultra-léger et portable, idéal pour vos promotions rapides.',
       price: 'À partir de 24 900 FCFA',
       icon: <Flag size={48} strokeWidth={1.5} />,
-      color: '#FFD700' // Gold
+      color: '#4D9FE0' // Sky
     },
     {
       title: 'Affiches Publicitaires',
       description: 'Visuels à haute conversion conçus pour capter l\'attention instantanément.',
       price: 'À partir de 5 000 FCFA',
       icon: <Palette size={48} strokeWidth={1.5} />,
-      color: '#00E5FF' 
+      color: '#F2C335'
     },
     {
       title: 'Vidéos Immersives',
       description: 'Motion design et vidéos promotionnelles pour exploser sur les réseaux sociaux.',
       price: 'À partir de 15 000 FCFA',
       icon: <Film size={48} strokeWidth={1.5} />,
-      color: '#FFD700'
+      color: '#4D9FE0'
     },
     {
       title: 'Branding Visuel',
       description: 'Identité visuelle complète pour positionner votre entreprise comme leader.',
       price: 'Sur devis',
       icon: <Sparkles size={48} strokeWidth={1.5} />,
-      color: '#00E5FF'
+      color: '#F2C335'
     }
   ];
 
@@ -124,7 +124,7 @@ const Services = () => {
         >
           <h2 className="section-title">Nos <span>Expertises</span></h2>
           <p className="section-subtitle">
-            Des solutions technologiques et créatives pour dominer votre marché au Burkina Faso.
+            Des créations professionnelles qui attirent vos clients et font grandir votre entreprise.
           </p>
         </motion.div>
 
